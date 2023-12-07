@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -11,10 +12,36 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trigger_for_barang_stok_update', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        DB::statement("
+            CREATE TRIGGER barang_stok_after_insert
+            AFTER INSERT ON barangmasuk
+            FOR EACH ROW
+                UPDATE barang
+                SET stok = stok + NEW.qty_masuk
+                WHERE id = NEW.barang_id;
+        ");
+
+        DB::statement("
+            CREATE TRIGGER barang_stok_after_delete
+            AFTER DELETE ON barangmasuk
+            FOR EACH ROW
+            BEGIN
+                UPDATE barang
+                SET stok = stok - OLD.qty_masuk
+                WHERE id = OLD.barang_id;
+            END;
+        ");
+
+        DB::statement("
+            CREATE TRIGGER barang_stok_after_update
+            AFTER UPDATE ON barangmasuk
+            FOR EACH ROW
+            BEGIN
+                UPDATE barang
+                SET stok = stok + NEW.qty_masuk - OLD.qty_masuk
+                WHERE id = NEW.barang_id;
+            END;        
+        ");
     }
 
     /**
@@ -22,6 +49,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trigger_for_barang_stok_update');
+        DB::unprepared("DROP TRIGGER IF EXISTS barang_stok_after_insert");
+        DB::unprepared("DROP TRIGGER IF EXISTS barang_stok_after_delete");
+        DB::unprepared("DROP TRIGGER IF EXISTS barang_stok_after_update");
     }
 };
