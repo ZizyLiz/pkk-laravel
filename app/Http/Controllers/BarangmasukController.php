@@ -62,7 +62,10 @@ class BarangmasukController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $barang = Barang::all();
+        $barangmasuk = Barangmasuk::find($id);
+        $selected = Barang::find($barangmasuk->barang_id);
+        return view('v_product.barangmasuk.edit', compact('barang','barangmasuk','selected'));
     }
 
     /**
@@ -70,7 +73,22 @@ class BarangmasukController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'tgl'    => 'required',
+            'qty'     => 'required',
+            'barang'  => 'required',
+        ]);
+
+        $dBarangmasuk = Barangmasuk::find($id);
+
+        $dBarangmasuk->update([
+            'tgl_masuk'    => $request->tgl,
+            'qty_masuk'     => $request->qty,
+            'barang_id'  => $request->barang,
+        ]);
+
+        //redirect to index
+        return redirect()->route('barangmasuk.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**
