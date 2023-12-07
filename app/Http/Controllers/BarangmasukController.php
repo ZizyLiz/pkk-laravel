@@ -78,6 +78,8 @@ class BarangmasukController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dBarangmasuk = Barangmasuk::find($id);
+        $dBarangmasuk->delete();
+        return redirect()->route('barangmasuk.index')->with(['success'=> 'Record Berhasil dihapus!']);
     }
 }
