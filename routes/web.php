@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BarangmasukController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('v_product/dashboard');
 });
 Route::resource('login',LoginController::class);
 Route::get('reg', function(){
     return view('register');
 });
 Route::post('register', [RegisterController::class,'store']);
+
+Route::resource('barang', ProductController::class);
+Route::resource('barangmasuk', BarangmasukController::class);
