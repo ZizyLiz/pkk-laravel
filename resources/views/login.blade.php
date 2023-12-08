@@ -7,10 +7,18 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     <title>Document</title>
+    <link href="{!! asset('theme/vendor/fontawesome-free/css/all.min.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('theme/css/sb-admin-2.min.css') !!}" rel="stylesheet">
 </head>
 <body>
     <div class="w-screen grid place-items-center h-screen">
         <div class="w-full max-w-xs">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert"></button>	
+                    <strong>{{ $message }}</strong>
+            </div>
+            @endif
             <form method="POST" action="{{url('login')}}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
               @csrf
               <div class="mb-4">

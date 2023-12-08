@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Barangkeluar;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class BarangkeluarController extends Controller
@@ -76,12 +77,16 @@ class BarangkeluarController extends Controller
         ]);
 
         $dBarangkeluar = Barangkeluar::find($id);
+        try{
+            $dBarangkeluar->update([
+                'tgl_keluar'    => $request->tgl,
+                'qty_keluar'     => $request->qty,
+                'barang_id'  => $request->barang,
+            ]);
+        }catch(QueryException $exeption){
+            return back()->with(['error'=> 'Jumlah melebihi stok barang!']);
+        }
 
-        $dBarangkeluar->update([
-            'tgl_keluar'    => $request->tgl,
-            'qty_keluar'     => $request->qty,
-            'barang_id'  => $request->barang,
-        ]);
 
         //redirect to index
         return redirect()->route('barangkeluar.index')->with(['success' => 'Data Berhasil Diubah!']);

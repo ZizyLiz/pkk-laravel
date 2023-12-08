@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index(){
+    public function login(){
         return view("login");
     }
     public function store(Request $request){
@@ -29,6 +29,10 @@ class LoginController extends Controller
         } else{
             return redirect('')->with('Benerin bjir');
         }
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with(['success'=>'Berhasil cuy']);
     }
 }
 
