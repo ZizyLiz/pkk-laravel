@@ -25,7 +25,7 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($data)){
-            return "anjay";
+            return redirect()->route('barang.index');
         } else{
             return redirect('')->with('Benerin bjir');
         }

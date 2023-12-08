@@ -19,16 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('v_product/dashboard');
+// });
 Route::get('/', function () {
-    return view('v_product/dashboard');
+    return redirect('/login');
 });
-Route::resource('login',LoginController::class);
-Route::get('reg', function(){
-    return view('register');
-});
-Route::post('register', [RegisterController::class,'store']);
 
-Route::resource('barang', ProductController::class);
-Route::resource('barangmasuk', BarangmasukController::class);
-Route::resource('barangkeluar', BarangkeluarController::class);
-Route::resource('kategori', KategoriController::class);
+    Route::resource('login',LoginController::class);
+    Route::get('reg', function(){
+        return view('register');
+    });
+    Route::post('register', [RegisterController::class,'store']);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('barang', ProductController::class);
+    Route::resource('barangmasuk', BarangmasukController::class);
+    Route::resource('barangkeluar', BarangkeluarController::class);
+    Route::resource('kategori', KategoriController::class);
+    
+});
