@@ -6,13 +6,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('barangmasuk.update',$barangmasuk->id) }}" method="POST" enctype="multipart/form-data">                    
+                        <form action="{{ route('barangkeluar.update',$barangkeluar->id) }}" method="POST" enctype="multipart/form-data">                    
                             @csrf
                             @method('PUT')
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Merk</label>
-                                <input type="date" class="form-control @error('nama') is-invalid @enderror" name="tgl" value="{{ old('tgl_masuk',$barangmasuk->tgl_masuk) }}" placeholder="Masukkan Nama Siswa">
+                                <input type="date" class="form-control @error('nama') is-invalid @enderror" name="tgl" value="{{ old('tgl_keluar',$barangkeluar->tgl_keluar) }}" placeholder="Masukkan Nama Siswa">
                             
                                 <!-- error message untuk nama -->
                                 @error('nama')
@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Seri</label>
-                                <input type="text" class="form-control @error('nis') is-invalid @enderror" pattern="[0-9]+" name="qty" value="{{ old('qty_masuk',$barangmasuk->qty_masuk) }}" placeholder="Masukkan Nomor Induk Siswa">
+                                <input type="text" class="form-control @error('nis') is-invalid @enderror" pattern="[0-9]+" name="qty" value="{{ old('qty_keluar',$barangkeluar->qty_keluar) }}" placeholder="Masukkan Nomor Induk Siswa">
                             
                                 <!-- error message untuk nis -->
                                 @error('nis')

@@ -39,7 +39,7 @@
                                     <select class="form-control" name="barang" aria-label="Default select example">
                                         <option value="">--Pilih--</option>
                                         @foreach ($barang as $item)
-                                            <option value="{{$item->id}}">{{$item->merk.$s.$item->seri}}</option>
+                                            <option value="{{$item->id}}">{{$item->merk." - ".$item->seri}}</option>
                                         @endforeach
                                     </select>
 
