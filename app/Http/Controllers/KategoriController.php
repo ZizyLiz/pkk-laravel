@@ -46,7 +46,10 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kategori = Kategori::find($id);
+        $selected = Kategori::find($kategori->id);
+        $val = ['A', 'M', 'BHP', 'BTHP'];
+        return view('v_product.kategori.edit', compact('kategori','selected','val'));
     }
 
     /**
@@ -54,7 +57,20 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'kat'    => 'required',
+            'desc'     => 'required',
+        ]);
+
+        $dkategori = Kategori::find($id);
+
+        $dkategori->update([
+            'kategori'    => $request->kat,
+            'deskripsi'     => $request->desc,
+        ]);
+
+        //redirect to index
+        return redirect()->route('kategori.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**
