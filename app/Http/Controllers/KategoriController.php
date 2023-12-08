@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class KategoriController extends Controller
 {
@@ -22,7 +23,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        $val = ['A', 'M', 'BHP', 'BTHP'];
+        return view('v_product.kategori.create', compact('val'));
     }
 
     /**
@@ -30,7 +32,16 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'kat'=>'required',
+            'desc'=>'required', 
+        ]);
+        $kategori = Kategori::create([
+            'kategori'=> $request->kat,
+            'deskripsi'=> $request->desc,
+        ]);
+
+        return redirect()->route('kategori.index')->with('success','Kategori Berhasil Ditambahkan');
     }
 
     /**
@@ -78,6 +89,16 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $kat = Kategori::find($id);
+        try {
+            $kat->delete();
+        } catch (QueryException $exception) {
+            return back()
+                ->with('error', 'Cannot delete data that have child');
+        }
+     
+        return redirect()
+            ->route('kategori.index')
+            ->with('message', 'Data deleted successfully');
     }
 }

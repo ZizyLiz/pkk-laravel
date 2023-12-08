@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class ProductController extends Controller
 {
@@ -101,12 +102,16 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $dBarang = Barang::find($id);
-
-        //delete post
-        $dBarang->delete();
-
-        //redirect to index
-        return redirect()->route('barang.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        $barang = Barang::find($id);
+        try {
+            $barang->delete();
+        } catch (QueryException $exception) {
+            return back()
+                ->with('error', 'Cannot delete data that have child');
+        }
+     
+        return redirect()
+            ->route('kategori.index')
+            ->with('message', 'Data deleted successfully');
     }
 }
