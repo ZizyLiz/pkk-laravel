@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\BarangmasukController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
@@ -30,3 +31,4 @@ Route::post('register', [RegisterController::class,'store']);
 Route::resource('barang', ProductController::class);
 Route::resource('barangmasuk', BarangmasukController::class);
 Route::resource('barangkeluar', BarangkeluarController::class);
+Route::resource('kategori', KategoriController::class);
