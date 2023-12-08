@@ -44,5 +44,7 @@ return new class extends Migration
     public function down(): void
     {
         DB::unprepared("DROP TRIGGER IF EXISTS barang_stok_after_barangkeluar_insert");
+        DB::unprepared("DROP TRIGGER IF EXISTS barang_stok_after_barangkeluar_delete");
+        DB::unprepared("DROP TRIGGER IF EXISTS barang_stok_after_barangkeluar_update");
     }
 };
