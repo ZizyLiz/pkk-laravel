@@ -90,8 +90,10 @@ class BarangkeluarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barangkeluar $barangkeluar)
+    public function destroy(string $id)
     {
-        //
+        $barangkeluar = Barangkeluar::find($id)
+        ->delete();
+        return back()->with(['success'=> 'Berhasil dihapus']);
     }
 }
