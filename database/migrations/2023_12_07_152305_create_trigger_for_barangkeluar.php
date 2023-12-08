@@ -26,7 +26,7 @@ return new class extends Migration
             FOR EACH ROW
                 UPDATE barang
                 SET stok = stok + OLD.qty_keluar
-                WHERE id = OLD.qty_keluar
+                WHERE id = OLD.barang_id
         ");
         DB::statement("
             CREATE TRIGGER barang_stok_after_barangkeluar_update
