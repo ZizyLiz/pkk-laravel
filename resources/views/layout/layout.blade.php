@@ -68,6 +68,7 @@
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="{{url('barang')}}">Show</a>
                         <a class="collapse-item" href="{{url('barangmasuk')}}">Barang Masuk</a>
+                        <a class="collapse-item" href="{{url('barangkeluar')}}">Barang Keluar</a>
                     </div>
                 </div>
             </li>
