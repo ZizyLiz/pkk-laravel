@@ -96,7 +96,6 @@ class KategoriController extends Controller
             return back()
                 ->with('error', 'Cannot delete data that have child');
         }
-     
         return redirect()
             ->route('kategori.index')
             ->with('message', 'Data deleted successfully');
