@@ -38,11 +38,15 @@ class BarangkeluarController extends Controller
             'qty' => 'required',
             'barang' => 'required',
         ]);
+        try {
         Barangkeluar::create([
             'tgl_keluar'     => $request->tgl,
             'qty_keluar'      => $request->qty,
             'barang_id'   => $request->barang,
         ]);
+    } catch (QueryException $e) {
+        return back()->with(['error'=> 'Jumlah barang keluar melebihi stok yang ada!']);
+    }
         return redirect()->route('barangkeluar.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
@@ -84,7 +88,7 @@ class BarangkeluarController extends Controller
                 'barang_id'  => $request->barang,
             ]);
         }catch(QueryException $exeption){
-            return back()->with(['error'=> 'Jumlah melebihi stok barang!']);
+            return back()->with(['error'=> 'Jumlah melebihi stok barang yang ada!']);
         }
 
 
