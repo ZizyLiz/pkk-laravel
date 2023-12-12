@@ -14,7 +14,8 @@ class DashboardController extends Controller
     public function index()
     {
         $barang = Barang::count();
-        return view("v_product.dashboard", compact("barang"));
+        $barangmasuk = Barangmasuk::count();
+        return view("v_product.dashboard", compact("barang","barangmasuk"));
         
     }
 
