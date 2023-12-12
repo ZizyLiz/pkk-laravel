@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Barangmasuk;
+use App\Models\Barangkeluar;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,7 +16,8 @@ class DashboardController extends Controller
     {
         $barang = Barang::count();
         $barangmasuk = Barangmasuk::count();
-        return view("v_product.dashboard", compact("barang","barangmasuk"));
+        $barangkeluar = Barangkeluar::count();
+        return view("v_product.dashboard", compact("barang","barangmasuk","barangkeluar"));
         
     }
 
