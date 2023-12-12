@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangkeluarController;
 use App\Http\Controllers\BarangmasukController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -34,6 +35,10 @@ Route::middleware(['guest'])->group(function () {
     Route::post('register', [RegisterController::class,'store']);
 });
 Route::middleware(['auth'])->group(function () {
+    // Route::get('dashboard', function(){
+    //     return view('v_product.dashboard');
+    // });
+    Route::resource('dashboard', DashboardController::class);
     Route::resource('barang', ProductController::class);
     Route::resource('barangmasuk', BarangmasukController::class);
     Route::resource('barangkeluar', BarangkeluarController::class);
