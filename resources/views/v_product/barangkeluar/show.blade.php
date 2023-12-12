@@ -16,7 +16,7 @@
                                 </tr>
                                 <tr>
                                     <td>Seri</td>
-                                    <td>{{ $barang->barang-seri}}</td>
+                                    <td>{{ $barang->barang->seri}}</td>
                                 </tr>
                                 <tr>
                                     <td>Jumlah</td>
