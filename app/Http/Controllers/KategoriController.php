@@ -99,6 +99,6 @@ class KategoriController extends Controller
         }
         return redirect()
             ->route('kategori.index')
-            ->with('message', 'Data deleted successfully');
+            ->with('success', 'Data deleted successfully');
     }
 }

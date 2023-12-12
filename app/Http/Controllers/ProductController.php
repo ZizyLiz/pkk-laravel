@@ -112,7 +112,7 @@ class ProductController extends Controller
         }
      
         return redirect()
-            ->route('kategori.index')
+            ->route('barang.index')
             ->with('message', 'Data deleted successfully');
     }
 }

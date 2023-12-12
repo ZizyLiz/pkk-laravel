@@ -44,7 +44,7 @@
                             <td>{{ $row->kategori }}</td>
                             <td>{{ $row->deskripsi }}</td>
                             <td class="text-center"> 
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('kategori.destroy', $row->id) }}" method="POST">
+                                <form onsubmit="return confirm('Apakah Anda Yakin Menghapus Data?');" action="{{ route('kategori.destroy', $row->id) }}" method="POST">
                                     <a href="{{ route('kategori.show', $row->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('kategori.edit', $row->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil-alt"></i></a>
                                     @csrf
