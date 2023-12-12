@@ -58,7 +58,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $barang = Barang::find($id);
+        return view('v_product.barang.show', compact('barang'));
     }
 
     /**

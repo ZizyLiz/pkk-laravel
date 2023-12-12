@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('barangmasuk', function (Blueprint $table) {
@@ -16,14 +13,13 @@ return new class extends Migration
             $table->date('tgl_masuk')->default(date("Y-m-d"));
             $table->integer('qty_masuk');
             $table->integer('barang_id');
-            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
+            $table->foreign('barang_id')
+                ->references('id')->on('barang')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('barangmasuk');

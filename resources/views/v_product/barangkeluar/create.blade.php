@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Seri</label>
+                                <label class="font-weight-bold">Jumlah</label>
                                 <input type="text" class="form-control @error('nis') is-invalid @enderror" name="qty" pattern="[0-9]+" value="{{ old('qty') }}" placeholder="Masukkan Jumlah">
                             
                                 <!-- error message untuk nis -->

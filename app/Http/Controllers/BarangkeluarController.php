@@ -53,9 +53,11 @@ class BarangkeluarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Barangkeluar $barangkeluar)
+    public function show(string $id)
     {
-        //
+        $barang = Barang::find($id);
+        return view("v_product.barangkeluar.show", compact('barang'));
+
     }
 
     /**

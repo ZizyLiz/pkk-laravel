@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('barang', function (Blueprint $table) {
@@ -18,14 +15,13 @@ return new class extends Migration
             $table->text('spesifikasi');
             $table->smallInteger('stok');
             $table->smallInteger('kategori_id');
-            $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('restrict');
+            $table->foreign('kategori_id')
+                ->references('id')->on('kategori')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('barang');

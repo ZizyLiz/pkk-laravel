@@ -11,7 +11,7 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Merk</label>
+                                <label class="font-weight-bold">Tanggal</label>
                                 <input type="date" class="form-control @error('nama') is-invalid @enderror" name="tgl" value="{{ old('tgl_keluar',$barangkeluar->tgl_keluar) }}" placeholder="Masukkan Nama Siswa">
                             
                                 <!-- error message untuk nama -->
@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Seri</label>
+                                <label class="font-weight-bold">Jumlah</label>
                                 <input type="text" class="form-control @error('nis') is-invalid @enderror" pattern="[0-9]+" name="qty" value="{{ old('qty_keluar',$barangkeluar->qty_keluar) }}" placeholder="Masukkan Nomor Induk Siswa">
                             
                                 <!-- error message untuk nis -->
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Kategori</label>
+                                <label class="font-weight-bold">Barang</label>
                                 <select name="barang" class="form-control">
                                     @foreach ($barang as $item)
                                         @if ($selected->id == $item->id)
