@@ -55,7 +55,7 @@ class BarangkeluarController extends Controller
      */
     public function show(string $id)
     {
-        $barang = Barang::find($id);
+        $barang = Barangkeluar::find($id);
         return view("v_product.barangkeluar.show", compact('barang'));
 
     }

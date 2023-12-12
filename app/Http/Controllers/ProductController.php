@@ -113,6 +113,6 @@ class ProductController extends Controller
      
         return redirect()
             ->route('barang.index')
-            ->with('message', 'Data deleted successfully');
+            ->with('success', 'Data deleted successfully');
     }
 }

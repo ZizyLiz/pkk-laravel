@@ -3,15 +3,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p>
+    <h1 class="h3 mb-2 text-gray-800">Barang Masuk</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -43,8 +40,8 @@
                             <td>{{ $rowbarang->barang->merk }}</td>
                             <td>{{ $rowbarang->barang->seri }}</td>
                             <td class="text-center"> 
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('barangmasuk.destroy', $rowbarang->id) }}" method="POST">
-                                    {{-- <a href="{{ route('barangmasuk.show', $rowbarang->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a> --}}
+                                <form onsubmit="return confirm('Apakah Anda Yakin Menghapus Data?');" action="{{ route('barangmasuk.destroy', $rowbarang->id) }}" method="POST">
+                                    <a href="{{ route('barangmasuk.show', $rowbarang->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('barangmasuk.edit', $rowbarang->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil-alt"></i></a>
                                     @csrf
                                     @method('DELETE')

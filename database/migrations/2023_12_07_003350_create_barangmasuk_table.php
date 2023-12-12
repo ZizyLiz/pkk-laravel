@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('barang_id');
             $table->foreign('barang_id')
                 ->references('id')->on('barang')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }

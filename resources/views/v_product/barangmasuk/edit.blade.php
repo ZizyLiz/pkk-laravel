@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">Seri</label>
+                                <label class="font-weight-bold">Jumlah</label>
                                 <input type="text" class="form-control @error('nis') is-invalid @enderror" pattern="[0-9]+" name="qty" value="{{ old('qty_masuk',$barangmasuk->qty_masuk) }}" placeholder="Masukkan Nomor Induk Siswa">
                             
                                 <!-- error message untuk nis -->
