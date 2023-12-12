@@ -49,7 +49,8 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $kategori = Kategori::find($id);
+        return view("v_product.kategori.show", compact('kategori'));
     }
 
     /**

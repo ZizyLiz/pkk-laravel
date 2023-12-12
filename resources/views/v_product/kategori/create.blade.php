@@ -30,7 +30,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Deskripsi</label>
-                                <input type="text" class="form-control @error('nis') is-invalid @enderror" name="desc" value="{{ old('desc') }}" placeholder="Masukkan Jumlah">
+                                <input type="text" class="form-control @error('nis') is-invalid @enderror" name="desc" value="{{ old('desc') }}" placeholder="Masukkan Deskripsi">
                             
                                 <!-- error message untuk nis -->
                                 @error('nis')

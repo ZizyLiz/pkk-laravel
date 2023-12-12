@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Kategori;
 use App\Models\Barangmasuk;
 use App\Models\Barangkeluar;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $barang = Barang::count();
         $barangmasuk = Barangmasuk::count();
         $barangkeluar = Barangkeluar::count();
-        return view("v_product.dashboard", compact("barang","barangmasuk","barangkeluar"));
+        $kategori = Kategori::count();
+        return view("v_product.dashboard", compact("barang","barangmasuk","barangkeluar","kategori"));
         
     }
 

@@ -3,19 +3,19 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+    <h1 class="h3 mb-2 text-gray-800">Kategori</h1>
+    {{-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p>
+            href="https://datatables.net">official DataTables documentation</a>.</p> --}}
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="{{ route('kategori.create') }}" class="btn btn-md btn-success mb-3">TAMBAH BARANG</a> 
+                <a href="{{ route('kategori.create') }}" class="btn btn-md btn-success mb-3">TAMBAH KATEGORI</a> 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-block">
@@ -45,7 +45,7 @@
                             <td>{{ $row->deskripsi }}</td>
                             <td class="text-center"> 
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('kategori.destroy', $row->id) }}" method="POST">
-                                    {{-- <a href="{{ route('barangmasuk.show', $row->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a> --}}
+                                    <a href="{{ route('barangmasuk.show', $row->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('kategori.edit', $row->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil-alt"></i></a>
                                     @csrf
                                     @method('DELETE')
